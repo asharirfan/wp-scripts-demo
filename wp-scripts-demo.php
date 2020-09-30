@@ -44,6 +44,21 @@ add_action( 'admin_menu', __NAMESPACE__ . '\wp_scripts_admin_page' );
  * @since 1.0.0
  */
 function wp_scripts_demo_render() {
+
+	$dependencies = plugin_dir_path( __FILE__ ) . 'build/index.asset.php';
+
+	if ( file_exists( $dependencies ) ) {
+		$asset_file = require $dependencies;
+
+		wp_enqueue_script(
+			'wp-scripts-demo-js',
+			plugins_url( 'build/index.js', __FILE__ ),
+			$asset_file['dependencies'],
+			$asset_file['version'],
+			true
+		);
+	}
+
 	?>
 	<div class="wrap">
 		<h1 class="wp-heading-inline"><?php esc_html_e( 'WP Scripts Demo', 'wp-scripts-demo' ); ?></h1>
