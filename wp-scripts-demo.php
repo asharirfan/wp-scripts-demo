@@ -13,6 +13,41 @@
  * @since 1.0.0
  */
 
+namespace AsharIrfan\WPScriptsDemo;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
+}
+
+/**
+ * Add the demo page.
+ *
+ * @author Ashar Irfan
+ * @since 1.0.0
+ */
+function wp_scripts_admin_page() {
+	add_submenu_page(
+		'tools.php',
+		esc_html__( 'WP Scripts Demo', 'wp-scripts-demo' ),
+		esc_html__( 'WP Scripts Demo', 'wp-scripts-demo' ),
+		'manage_options',
+		'wp-scripts-demo',
+		__NAMESPACE__ . '\wp_scripts_demo_render'
+	);
+}
+add_action( 'admin_menu', __NAMESPACE__ . '\wp_scripts_admin_page' );
+
+/**
+ * Render demo page.
+ *
+ * @author Ashar Irfan
+ * @since 1.0.0
+ */
+function wp_scripts_demo_render() {
+	?>
+	<div class="wrap">
+		<h1 class="wp-heading-inline"><?php esc_html_e( 'WP Scripts Demo', 'wp-scripts-demo' ); ?></h1>
+		<div id="wp-scripts-demo"></div>
+	</div>
+	<?php
 }
