@@ -29,5 +29,7 @@
     "url": "https://github.com/asharirfan/wp-scripts-demo/issues"
   },
   "homepage": "https://github.com/asharirfan/wp-scripts-demo#readme",
-  "devDependencies": {}
+  "devDependencies": {
+    "@wordpress/scripts": "^12.2.1"
+  }
 }
